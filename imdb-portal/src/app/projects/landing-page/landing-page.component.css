@@ -6,7 +6,7 @@
 
 }
 
-.alert, .welcome-banner {
+.alert, .loading-banner, .welcome-banner {
   padding: 8px;
   font-size: small;
   text-align: center;
