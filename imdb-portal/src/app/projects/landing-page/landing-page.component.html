@@ -1,0 +1,15 @@
+<div class="content">
+
+  <div *ngIf="error && !welcomeNoteVisible" class="alert">
+    <p>Movie not found!</p>
+  </div>
+
+  <div *ngIf="welcomeNoteVisible && !error" class="welcome-banner">
+    <p>Welcome to OMDB Search, search something in the bar above !</p>
+  </div>
+
+  <ng-container *ngIf="!welcomeNoteVisible && !error">
+    <app-results-page></app-results-page>
+  </ng-container>
+
+</div>
