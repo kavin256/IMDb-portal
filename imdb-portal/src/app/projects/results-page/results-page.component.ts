@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MovieData} from '../../models/movie-data';
 
 @Component({
   selector: 'app-results-page',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsPageComponent implements OnInit {
 
+  @Input() movies: MovieData [];
+  selectedIndex: number = null;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  expandDetails(index: number) {
+    this.selectedIndex = index;
+  }
 }

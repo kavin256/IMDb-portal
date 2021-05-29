@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {HttpHeaders, HttpParams} from '@angular/common/http';
 import {DataLoaderService} from '../../services/data-loader.service';
 import {Constants} from '../../utils/Constants';
@@ -21,6 +21,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   status: Status;
+  movies: MovieData [];
   sub = new Subscription();
   errorMessage: string;
   query: string;
@@ -36,7 +37,8 @@ export class LandingPageComponent implements OnInit {
       .subscribe(params => {
 
         // resetting URL
-        window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
+        // Todo: uncomment
+        // window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
 
         // search using the query obtained
         this.query = params.query;
@@ -58,20 +60,19 @@ export class LandingPageComponent implements OnInit {
         .then((data: ApiResponse) => {
           if (data.Response === 'True') {
             this.status = Status.results;
+            this.movies = data.Search;
           } else if (data.Response === 'False') {
             this.status = Status.error;
             this.errorMessage = data.Error;
           }
         }).catch((e) => {
-          console.error(e);
+        this.status = Status.error;
+        this.errorMessage = 'Something went wrong!';
       }).finally();
     }
-
-
   }
-
-
 }
+
 export enum Status {
   welcome = 'welcome',
   error = 'error',

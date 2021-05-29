@@ -1,1 +1,8 @@
-<p>results-page works!</p>
+<ng-container *ngFor="let movie of movies; let i = index">
+<app-movie-card
+  [movie]="movie"
+  [index]="i"
+  [fullWidth]="selectedIndex !== null && selectedIndex === i"
+  (selectionEmitter)="expandDetails($event)"
+></app-movie-card>
+</ng-container>

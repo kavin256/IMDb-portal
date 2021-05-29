@@ -13,7 +13,9 @@
   </div>
 
   <ng-container *ngIf="status === 'results'">
-    <app-results-page></app-results-page>
+    <app-results-page
+      [movies]="movies"
+    ></app-results-page>
   </ng-container>
 
 </div>
