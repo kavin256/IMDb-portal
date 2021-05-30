@@ -1,0 +1,17 @@
+<!--Movie results-->
+<ng-container *ngFor="let movie of movies; let i = index">
+  <app-movie-card
+    *ngIf="i < pagEnd && i >= pagStart"
+    [movie]="movie"
+    [index]="i"
+    [fullWidth]="selectedIndex !== null && selectedIndex === i"
+    (selectionEmitter)="expandDetails($event)"
+  ></app-movie-card>
+</ng-container>
+
+<!--pagination (this could be implemented as a reusable component too if this is needed somewhere else)-->
+<div *ngIf="paginationAvailable" class="pagination">
+  <button (click)="goLeft()" class="button" [disabled]="leftDisabled"><<</button>
+  <label>  {{pageNumber}}  </label>
+  <button (click)="goRight()" class="button" [disabled]="rightDisabled">>></button>
+</div>

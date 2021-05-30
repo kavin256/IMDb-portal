@@ -1,0 +1,32 @@
+<div [ngClass]="fullWidth ? 'card-expanded': 'card'">
+  <table>
+    <tr>
+      <td class="image-container" rowspan="2">
+        <img *ngIf="imageUrl" src="{{imageUrl}}">
+      </td>
+      <td style="text-align: left; vertical-align: top" colspan="2">
+        <p>{{movie?.Title}}</p>
+        <div *ngIf="fullWidth" class="expanded-details-container">
+          <p><span class="section-header">Plot</span><br>{{movie?.Plot}}</p>
+          <p><span class="section-header">Actors</span><br>{{movie?.Actors}}</p>
+          <p><span class="section-header">Ratings</span><br>
+            <ng-container *ngFor="let rating of movie?.Ratings">
+              - {{rating?.Source}}: {{rating?.Value}}<br>
+            </ng-container>
+          </p>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td height="55px">
+        <p class="year">{{movie?.Year}}</p>
+      </td>
+      <td style="text-align: right">
+        <button (click)="details()" id="details-button" class="details-button">
+          <span class="details-button-text">{{!fullWidth ? 'DETAILS' : 'SUMMARY'}}</span>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,21 @@
+<div class="content">
+
+  <div *ngIf="status === 'error'" class="alert">
+    <p>{{errorMessage}}</p>
+  </div>
+
+  <div *ngIf="status === 'welcome'" class="welcome-banner">
+    <p>Welcome to OMDB Search, search something in the bar above !</p>
+  </div>
+
+  <div *ngIf="status === 'loading'" class="loading-banner">
+    <p>Loading ..</p>
+  </div>
+
+  <ng-container *ngIf="status === 'results'">
+    <app-results-page
+      [movies]="movies"
+    ></app-results-page>
+  </ng-container>
+
+</div>

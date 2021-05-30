@@ -1,0 +1,21 @@
+.content {
+  justify-content: center;
+  margin-top: 125px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.alert, .loading-banner, .welcome-banner {
+  padding: 8px;
+  font-size: small;
+  text-align: center;
+  background-color: rgba(237, 248, 250, 0.72);
+}
+
+.alert {
+  background-color: #faedf1;
+  border: 1px dashed #FF0000;
+  color: red;
+}
+
+

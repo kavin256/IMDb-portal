@@ -1,0 +1,29 @@
+<div class="header">
+  <div class="header-content">
+    <table style="padding: 0; margin: auto; width: 100%">
+      <tr>
+        <td width="50%" style="text-align: left">
+          <p id="header-title" class="header-title">{{headerTitle}}</p>
+        </td>
+        <td>
+        </td>
+        <td class="search-label" width="30%" style="text-align: right">
+          <label>{{searchLabel}}</label>
+        </td>
+        <td width="20%" style="text-align: center">
+          <table style="padding: 0; margin: auto; width: 100%">
+            <tr>
+              <td>
+                <span><input type="text" [(ngModel)]="query"></span>
+              </td>
+              <td style="padding-left: 10px">
+                <button (click)="search()" id="search-button" class="search-button"><span class="search-button-text">SEARCH</span>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
