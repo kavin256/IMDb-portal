@@ -26,7 +26,9 @@ export class ResultsPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.movieCount = this.movies.length;
+    if (this.movies) {
+      this.movieCount = this.movies.length;
+    }
     this.MAX_MOVIE_RESULTS_COUNT = Constants.MAX_MOVIE_RESULTS_COUNT;
     this.setPagination();
   }

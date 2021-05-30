@@ -5,7 +5,7 @@ export enum Constants {
 
   // values
   API_KEY_VALUE = '79085be9',
-  MAX_MOVIE_RESULTS_COUNT = 4,
+  MAX_MOVIE_RESULTS_COUNT = 6,
 
   // param names
   API_KEY = 'apikey',

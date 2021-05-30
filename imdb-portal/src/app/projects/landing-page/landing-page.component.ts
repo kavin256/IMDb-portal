@@ -38,7 +38,7 @@ export class LandingPageComponent implements OnInit {
 
         // resetting URL
         // Todo: uncomment
-        // window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
+        window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
 
         // search using the query obtained
         this.query = params.query;

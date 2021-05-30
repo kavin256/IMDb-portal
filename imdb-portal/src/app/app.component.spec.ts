@@ -1,15 +1,27 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {HeaderComponent} from './projects/header/header.component';
+import {LandingPageComponent} from './projects/landing-page/landing-page.component';
+import {FooterComponent} from './projects/footer/footer.component';
+import {ResultsPageComponent} from './projects/results-page/results-page.component';
+import {FormsModule} from '@angular/forms';
+import { MovieCardComponent } from './projects/movie-card/movie-card.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        LandingPageComponent,
+        FooterComponent,
+        ResultsPageComponent,
+        MovieCardComponent
       ],
     }).compileComponents();
   }));
@@ -26,10 +38,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('imdb-portal');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('imdb-portal app is running!');
-  });
 });

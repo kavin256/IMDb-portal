@@ -28,8 +28,10 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit() {
     // create image URL
-    this.imageUrl = Constants.API_IMAGE_URL + Constants.SEPARATOR_QUES + Constants.API_KEY + Constants.SEPARATOR_EQUAL
-      + Constants.API_KEY_VALUE + Constants.SEPARATOR_AMP + Constants.MOVIE_ID + Constants.SEPARATOR_EQUAL + this.movie.imdbID;
+    if (this.movie) {
+      this.imageUrl = Constants.API_IMAGE_URL + Constants.SEPARATOR_QUES + Constants.API_KEY + Constants.SEPARATOR_EQUAL
+        + Constants.API_KEY_VALUE + Constants.SEPARATOR_AMP + Constants.MOVIE_ID + Constants.SEPARATOR_EQUAL + this.movie.imdbID;
+    }
   }
 
   details() {
