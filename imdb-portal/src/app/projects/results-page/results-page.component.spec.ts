@@ -26,9 +26,41 @@ describe('ResultsPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should not have the pagination if the movies can be shown in one page'`, () => {
+  it(`should not have the pagination if the movies are not available'`, () => {
     fixture.detectChanges();
     component.movies = [];
+    component.ngOnInit();
+
+    expect(component.paginationAvailable).toBeFalsy();
+  });
+
+  it(`should not have the pagination if the number of movies are exactly as the max limit'`,
+    () => {
+    fixture.detectChanges();
+    component.movies = [
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData()
+    ];
+    component.ngOnInit();
+
+    expect(component.paginationAvailable).toBeFalsy();
+  });
+
+  it(`should not have the pagination if the number of movies are less than the max limit'`, () => {
+    fixture.detectChanges();
+    component.movies = [
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData()
+    ];
+    component.ngOnInit();
+
     expect(component.paginationAvailable).toBeFalsy();
   });
 
@@ -48,5 +80,38 @@ describe('ResultsPageComponent', () => {
     ];
     component.ngOnInit();
     expect(component.paginationAvailable).toBeTruthy();
+  });
+
+  it(`should be navigated to the next page when clicked right'`, () => {
+    fixture.detectChanges();
+    component.movies = [
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData()
+    ];
+    component.ngOnInit();
+    component.goRight();
+    expect(component.pageNumber).toEqual(2);
+  });
+
+  it(`should be navigated to the previous page when clicked left'`, () => {
+    fixture.detectChanges();
+    component.movies = [
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData(),
+      new MovieData()
+    ];
+    component.ngOnInit();
+    component.goRight();
+    component.goLeft();
+    expect(component.pageNumber).toEqual(1);
   });
 });
