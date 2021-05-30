@@ -10,8 +10,8 @@ export class ApiResponse {
   totalResults?: string;
 
   // when retrieved by ID
-  Title: string;
-  Year: string;
+  Title?: string;
+  Year?: string;
   Rated?: string;
   Released?: string;
   Runtime?: string;

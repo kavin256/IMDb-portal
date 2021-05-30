@@ -14,7 +14,7 @@ p {
 }
 
 .card-expanded {
-  height: 260px;
+  height: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 98%;
@@ -51,8 +51,7 @@ table {
 }
 
 .expanded-details-container {
-  max-height: 160px;
-  overflow-y:auto;
+  overflow-y: visible;
 }
 
 .image-container {
@@ -79,7 +78,6 @@ table {
 
 @media (max-width: 947px) {
   .card-expanded {
-    height: 270px;
     width: 30%;
   }
 }
