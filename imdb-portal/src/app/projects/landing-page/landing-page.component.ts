@@ -7,6 +7,11 @@ import {Constants} from '../../utils/Constants';
 import {MovieData} from '../../models/movie-data';
 import {ApiResponse} from '../../models/api-response';
 
+/**
+ * Author: Kavin Ranawella
+ * Date: 2021-05-28
+ */
+
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -37,7 +42,6 @@ export class LandingPageComponent implements OnInit {
       .subscribe(params => {
 
         // resetting URL
-        // Todo: uncomment
         window.history.replaceState({}, document.title, window.location.href.split('?')[0]);
 
         // search using the query obtained
@@ -52,6 +56,7 @@ export class LandingPageComponent implements OnInit {
       this.status = Status.loading;
       this.errorMessage = '';
 
+      // api GET call to get the movie list
       let params = new HttpParams();
       params = params.append(Constants.API_KEY, Constants.API_KEY_VALUE);
       params = params.append(Constants.SEARCH_QUERY, query);

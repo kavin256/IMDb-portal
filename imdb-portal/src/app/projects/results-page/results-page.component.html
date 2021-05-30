@@ -9,7 +9,7 @@
   ></app-movie-card>
 </ng-container>
 
-<!--pagination-->
+<!--pagination (this could be implemented as a reusable component too if this is needed somewhere else)-->
 <div *ngIf="paginationAvailable" class="pagination">
   <button (click)="goLeft()" class="button" [disabled]="leftDisabled"><<</button>
   <label>  {{pageNumber}}  </label>

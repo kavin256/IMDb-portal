@@ -2,6 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MovieData} from '../../models/movie-data';
 import {Constants} from '../../utils/Constants';
 
+/**
+ * Author: Kavin Ranawella
+ * Date: 2021-05-28
+ */
+
 @Component({
   selector: 'app-results-page',
   templateUrl: './results-page.component.html',
@@ -54,9 +59,7 @@ export class ResultsPageComponent implements OnInit {
 
   }
 
-  /**
-   * initial pagination variables setting
-   */
+  // initial pagination variables setting
   setPagination() {
     if (this.movieCount && this.movieCount > 0) {
       this.pageNumber = 1;

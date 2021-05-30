@@ -5,6 +5,11 @@ import {HttpHeaders, HttpParams} from '@angular/common/http';
 import {ApiResponse} from '../../models/api-response';
 import {DataLoaderService} from '../../services/data-loader.service';
 
+/**
+ * Author: Kavin Ranawella
+ * Date: 2021-05-28
+ */
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
