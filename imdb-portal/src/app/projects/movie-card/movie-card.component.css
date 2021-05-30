@@ -74,7 +74,7 @@ table {
 .year {
   font-weight: bold;
   color: #cccccc;
-  /*font-size: small;*/
+  text-align: left;
 }
 
 @media (max-width: 947px) {

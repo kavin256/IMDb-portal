@@ -1,4 +1,5 @@
 import {MovieData} from './movie-data';
+import {MovieRating} from './movie-rating';
 
 export class ApiResponse {
   Response: string;
@@ -23,7 +24,7 @@ export class ApiResponse {
   Country?: string;
   Awards?: string;
   Poster?: string;
-  Ratings?: string [];
+  Ratings?: MovieRating [];
   Metascore?: string;
   imdbRating?: string;
   imdbVotes?: string;

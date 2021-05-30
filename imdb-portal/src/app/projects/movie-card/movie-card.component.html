@@ -9,7 +9,11 @@
         <div *ngIf="fullWidth" class="expanded-details-container">
           <p><span class="section-header">Plot</span><br>{{movie.Plot}}</p>
           <p><span class="section-header">Actors</span><br>{{movie.Actors}}</p>
-          <p><span class="section-header">Ratings</span><br>{{movie.Ratings}}</p>
+          <p><span class="section-header">Ratings</span><br>
+            <ng-container *ngFor="let rating of movie?.Ratings">
+              - {{rating.Source}}: {{rating.Value}}<br>
+            </ng-container>
+          </p>
         </div>
       </td>
     </tr>

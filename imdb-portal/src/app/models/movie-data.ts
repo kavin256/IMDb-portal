@@ -1,3 +1,5 @@
+import {MovieRating} from './movie-rating';
+
 export class MovieData {
   Title: string;
   Year: string;
@@ -13,7 +15,7 @@ export class MovieData {
   Country?: string;
   Awards?: string;
   Poster?: string;
-  Ratings?: string [];
+  Ratings?: MovieRating [];
   Metascore?: string;
   imdbRating?: string;
   imdbVotes?: string;
