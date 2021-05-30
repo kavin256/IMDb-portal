@@ -17,3 +17,10 @@ export enum Constants {
   SEPARATOR_EQUAL = '=',
   SEPARATOR_QUES = '?'
 }
+
+export enum Status {
+  welcome = 'welcome',
+  error = 'error',
+  loading = 'loading',
+  results = 'results'
+}

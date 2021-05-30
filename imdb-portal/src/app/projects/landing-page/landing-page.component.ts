@@ -52,11 +52,10 @@ export class LandingPageComponent implements OnInit {
       this.status = Status.loading;
       this.errorMessage = '';
 
-      const url = Constants.API_BASE_URL;
       let params = new HttpParams();
       params = params.append(Constants.API_KEY, Constants.API_KEY_VALUE);
       params = params.append(Constants.SEARCH_QUERY, query);
-      this.dataLoaderService.get<MovieData>(url, params, new HttpHeaders())
+      this.dataLoaderService.get<MovieData>(Constants.API_BASE_URL, params, new HttpHeaders())
         .then((data: ApiResponse) => {
           if (data.Response === 'True') {
             this.status = Status.results;

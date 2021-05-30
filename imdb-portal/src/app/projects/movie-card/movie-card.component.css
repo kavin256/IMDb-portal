@@ -8,6 +8,11 @@
   display: inline-block;
 }
 
+p {
+  font-size: small;
+  margin-left: 15px;
+}
+
 .card-expanded {
   height: 260px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -22,10 +27,16 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+img {
+  margin-top: 0;
+  width: 170px;
+}
+
 table {
   width: 100%;
   height: 100%;
 }
+
 .details-button {
   background-color: #1a57f3;
   color: white;
@@ -39,9 +50,25 @@ table {
   opacity: 0.9;
 }
 
+.expanded-details-container {
+  max-height: 160px;
+  overflow-y:auto;
+}
+
+.image-container {
+  width: 170px;
+  vertical-align: top;
+}
+
 .details-button-text {
   font-weight: bold;
   font-size: small;
+}
+
+.section-header {
+  font-weight: normal;
+  font-size: small;
+  color: #585858;
 }
 
 .year {

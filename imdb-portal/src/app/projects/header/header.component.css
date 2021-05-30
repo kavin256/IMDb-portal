@@ -3,6 +3,7 @@
   height: 80px;
   background-color: white;
   position: fixed;
+  z-index: 1;
   color: black;
   box-shadow: 5px 1px 8px rgba(136, 136, 136, 0.49);
   width: 100%;

@@ -1,10 +1,17 @@
 <div [ngClass]="fullWidth ? 'card-expanded': 'card'">
   <table>
     <tr>
-      <td width="170px" style="vertical-align: top" rowspan="2">
-        <img style="margin-top: 0" width="170px" src="{{imageUrl}}">
+      <td class="image-container" rowspan="2">
+        <img *ngIf="imageUrl" src="{{imageUrl}}">
       </td>
-      <td style="text-align: left; vertical-align: top" colspan="2"><p style="margin-left: 15px">{{movie.Title}}</p></td>
+      <td style="text-align: left; vertical-align: top" colspan="2">
+        <p>{{movie.Title}}</p>
+        <div *ngIf="fullWidth" class="expanded-details-container">
+          <p><span class="section-header">Plot</span><br>{{movie.Plot}}</p>
+          <p><span class="section-header">Actors</span><br>{{movie.Actors}}</p>
+          <p><span class="section-header">Ratings</span><br>{{movie.Ratings}}</p>
+        </div>
+      </td>
     </tr>
 
     <tr>

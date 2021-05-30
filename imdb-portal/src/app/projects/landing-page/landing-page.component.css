@@ -2,8 +2,8 @@
 .content {
   justify-content: center;
   margin-top: 125px;
+  margin-bottom: 60px;
   text-align: center;
-
 }
 
 .alert, .loading-banner, .welcome-banner {

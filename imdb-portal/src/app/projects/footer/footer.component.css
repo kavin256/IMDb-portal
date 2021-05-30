@@ -2,8 +2,8 @@
   position: fixed;
   left: 0;
   bottom: 0;
+  box-shadow: 0 0 3px rgba(136, 136, 136, 0.49);
   width: 100%;
-  background-color: red;
-  color: white;
+  background-color: white;
   text-align: center;
 }
