@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MovieData} from '../../models/movie-data';
 import {Constants} from '../../utils/Constants';
+import {LogEngineService} from '../../services/log-engine.service';
 
 /**
  * Author: Kavin Ranawella
@@ -16,6 +17,8 @@ export class ResultsPageComponent implements OnInit {
 
   @Input() movies: MovieData [];
 
+  logStatement: string;
+
   // pagination related
   paginationAvailable: boolean;
   MAX_MOVIE_RESULTS_COUNT: number;
@@ -27,10 +30,15 @@ export class ResultsPageComponent implements OnInit {
   leftDisabled = true;
   movieCount: number;
 
-  constructor() {
+  constructor(
+    public logService: LogEngineService
+  ) {
   }
 
   ngOnInit() {
+    // using logger since this component includes API communications
+    this.logStatement = 'Logger Initialized';
+
     if (this.movies) {
       this.movieCount = this.movies.length;
     }
@@ -43,6 +51,8 @@ export class ResultsPageComponent implements OnInit {
   }
 
   goLeft() {
+    this.logStatement = this.logService.info('Clicked left pagination button');
+
     this.pageNumber -= 1;
     this.pagStart = (this.pageNumber - 1) * this.MAX_MOVIE_RESULTS_COUNT;
     this.pagEnd = this.pagStart + this.MAX_MOVIE_RESULTS_COUNT;
@@ -51,6 +61,8 @@ export class ResultsPageComponent implements OnInit {
   }
 
   goRight() {
+    this.logStatement = this.logService.info('Clicked right pagination button');
+
     this.pagStart = this.pageNumber * this.MAX_MOVIE_RESULTS_COUNT;
     this.pagEnd = this.pagStart + this.MAX_MOVIE_RESULTS_COUNT;
     this.pageNumber += 1;
@@ -61,6 +73,8 @@ export class ResultsPageComponent implements OnInit {
 
   // initial pagination variables setting
   setPagination() {
+    this.logStatement = this.logService.info('Setting pagination');
+
     if (this.movieCount && this.movieCount > 0) {
       this.pageNumber = 1;
       this.pagStart = 0;

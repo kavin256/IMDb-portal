@@ -4,6 +4,7 @@ import {Constants, Status} from '../../utils/Constants';
 import {HttpHeaders, HttpParams} from '@angular/common/http';
 import {ApiResponse} from '../../models/api-response';
 import {DataLoaderService} from '../../services/data-loader.service';
+import {LogEngineService} from '../../services/log-engine.service';
 
 /**
  * Author: Kavin Ranawella
@@ -22,16 +23,21 @@ export class MovieCardComponent implements OnInit {
   @Input() index: number;
   @Output() selectionEmitter = new EventEmitter<number>();
 
+  logStatement: string;
   imageUrl: string;
   status: Status;
   errorMessage: string;
 
   constructor(
-    private dataLoaderService: DataLoaderService
+    public dataLoaderService: DataLoaderService,
+    public logService: LogEngineService
   ) {
   }
 
   ngOnInit() {
+    // using logger since this component includes API communications
+    this.logStatement = 'Logger Initialized';
+
     // create image URL
     if (this.movie) {
       this.imageUrl = Constants.API_IMAGE_URL + Constants.SEPARATOR_QUES + Constants.API_KEY + Constants.SEPARATOR_EQUAL
@@ -50,6 +56,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   detailSearch(ID: string): void {
+    this.logStatement = this.logService.info('Movies detail search initiated');
 
     // if the details are available already, no point of sending a details call
     if (ID && !(this.movie.Plot && this.movie.Plot && this.movie.Plot)) {
@@ -59,14 +66,17 @@ export class MovieCardComponent implements OnInit {
       this.dataLoaderService.get<MovieData>(Constants.API_BASE_URL, params, new HttpHeaders())
         .then((data: ApiResponse) => {
           if (data.Response === 'True') {
+            this.logStatement = this.logService.info('Movie detail search successful');
             this.status = Status.results;
             this.mapDetails(data);
           } else if (data.Response === 'False') {
+            this.logStatement = this.logService.error('Movie detail search error');
             this.status = Status.error;
             this.errorMessage = data.Error;
           }
         }).catch((e) => {
         this.status = Status.error;
+        this.logStatement = this.logService.error('Movie detail search error. Might not have reached the endpoint');
         this.errorMessage = 'Something went wrong!';
       }).finally();
     }
@@ -76,5 +86,6 @@ export class MovieCardComponent implements OnInit {
     this.movie.Plot = data.Plot;
     this.movie.Actors = data.Actors;
     this.movie.Ratings = data.Ratings;
+    this.logStatement = this.logService.info('Movie detail mapping');
   }
 }

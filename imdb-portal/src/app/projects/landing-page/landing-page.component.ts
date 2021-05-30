@@ -6,6 +6,7 @@ import {DataLoaderService} from '../../services/data-loader.service';
 import {Constants} from '../../utils/Constants';
 import {MovieData} from '../../models/movie-data';
 import {ApiResponse} from '../../models/api-response';
+import {LogEngineService} from '../../services/log-engine.service';
 
 /**
  * Author: Kavin Ranawella
@@ -19,19 +20,22 @@ import {ApiResponse} from '../../models/api-response';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(
-    public route: ActivatedRoute,
-    public dataLoaderService: DataLoaderService
-  ) {
-  }
-
+  logStatement: string;
   status: Status;
   movies: MovieData [];
   sub = new Subscription();
   errorMessage: string;
   query: string;
 
+  constructor(
+    public route: ActivatedRoute,
+    public logService: LogEngineService,
+    public dataLoaderService: DataLoaderService
+  ) {
+  }
+
   ngOnInit() {
+    this.logStatement = this.logService.info('Application initialized!');
 
     // initially, display the welcome note
     this.status = Status.welcome;
@@ -52,6 +56,8 @@ export class LandingPageComponent implements OnInit {
 
   search(query: string): void {
     if (query) {
+      this.logStatement = this.logService.info('Search init');
+
       // resetting the error
       this.status = Status.loading;
       this.errorMessage = '';
@@ -63,15 +69,18 @@ export class LandingPageComponent implements OnInit {
       this.dataLoaderService.get<MovieData>(Constants.API_BASE_URL, params, new HttpHeaders())
         .then((data: ApiResponse) => {
           if (data.Response === 'True') {
+            this.logStatement = this.logService.info('Search successful');
             this.status = Status.results;
             this.movies = data.Search;
           } else if (data.Response === 'False') {
+            this.logStatement = this.logService.error('Search unsuccessful: ' + data.Error);
             this.status = Status.error;
             this.errorMessage = data.Error;
           }
         }).catch((e) => {
         this.status = Status.error;
         this.errorMessage = 'Something went wrong!';
+        this.logStatement = this.logService.error('Search unsuccessful. Might not have reached the endpoint');
       }).finally();
     }
   }

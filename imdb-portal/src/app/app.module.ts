@@ -9,6 +9,7 @@ import {FooterComponent} from './projects/footer/footer.component';
 import {ResultsPageComponent} from './projects/results-page/results-page.component';
 import {FormsModule} from '@angular/forms';
 import { MovieCardComponent } from './projects/movie-card/movie-card.component';
+import {LogEngineService} from './services/log-engine.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { MovieCardComponent } from './projects/movie-card/movie-card.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LogEngineService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
